@@ -9,7 +9,8 @@ To develop a Django application to store and retrieve data from a Book database 
 
 ## Entity Relationship Diagram
 
-![ORMER_DAI](https://github.com/820NaveenKumar208/ORM/assets/154746066/6b617ced-a300-4214-9dfa-3f3b6d268100)
+![Entity diagram](https://github.com/820NaveenKumar208/ORM/assets/154746066/ab418e9b-185f-46e3-bd5f-8659f74a0810)
+
 
 
 ## DESIGN STEPS
@@ -30,28 +31,30 @@ Execute Django admin and create details for 10 books
 
 ### models.py
 ```
-from django.db import models
-from django.contrib import admin
-class Book_DB(models.Model):
-	Author=models.CharField(max_length=20);
-	Book_Name=models.CharField(max_length=50);
-	book_No=models.CharField(primary_key="book_no",max_length=10);
-	Customer_Id=models.CharField(max_length=20);
-	
+models.py
 
-class Book_DBAdmin(admin.modelAdmin):
-	list_display=("aAthor","Book_Name","Book_No","Customer_Id");
+from django.db import models
+from django.contrib import admin 
+class Book(models.Model):
+    Bookid=models.IntegerField(primary_key=True);
+    Bookname=models.CharField(max_length=20);
+    Bookauthor=models.CharField(max_length=50);
+    Bookprice=models.IntegerField();
+    Bookgenre=models.CharField(max_length=20);
+class BookAdmin(admin.ModelAdmin):
+    list_display=("Bookid","Bookname","Bookauthor","Bookprice","Bookgenre");
 ```
-### admin.py
+
+admin.py
 ```
 from django.contrib import admin
-from .models import Book_DB,Book_DBAdmin
-admin.site.register(Book_DB,Book_DBAdmin)
+from .models import Book,BookAdmin
+admin.site.register(Book,BookAdmin)
 
 ```
 ## OUTPUT
+![Website Book link](https://github.com/820NaveenKumar208/ORM/assets/154746066/7136d3dd-f5d6-4445-af78-7369a7fcf22c)
 
-![alt text](<Screenshot (69).png>)
 
 ## RESULT
 Thus the program for creating a database using ORM hass been executed successfully
